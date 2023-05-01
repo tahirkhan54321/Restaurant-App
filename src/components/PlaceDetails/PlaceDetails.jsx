@@ -17,7 +17,8 @@ import {
   Chip,
   Rating,
 } from "@mui/material";
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection";
 import PhoneIcon from "@mui/icons-material/Phone";
 import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
 
@@ -26,7 +27,6 @@ import useStyles from "./styles"; //note that this doesn't work anymore and will
   */
 
 const PlaceDetails = ({ place, selected, refProp }) => {
-
   /*
     ------------------------------------DECLARING VARIABLES & FUNCTIONS-----------------------------------------------------------
   */
@@ -38,7 +38,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   /* if a place from the List has been selected, scroll to it */
   if (selected)
     refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-
 
   /*
     ------------------------------------RENDER PLACEDETAILS CARD-------------------------------------------------------------------
@@ -77,6 +76,17 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.price_level}
           </Typography>
         </Box>
+        {/* Show the distance between user and restaurant*/}
+        {place?.distance_string && (
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.spacing}
+          >
+            <AssistantDirectionIcon />
+            {place.distance_string}
+          </Typography>
+        )}
         {/*Display the ranking in a box with some margin at the bottom */}
         <Box display="flex" justifyContent="space-between">
           <Typography variant="subtitle1">Ranking</Typography>
