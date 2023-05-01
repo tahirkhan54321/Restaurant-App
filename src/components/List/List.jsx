@@ -51,7 +51,8 @@ const List = ({
 
   /* Helps to scroll to the place in the List. Call this useEffect every time the places array changes. */
   useEffect(() => {
-    const refs = Array(places?.length)
+    var refs = []
+    refs = Array(places?.length)
       .fill()
       .map((_, i) => refs[i] || createRef());
     setElRefs(refs);
@@ -66,7 +67,7 @@ const List = ({
     <div className={classes.container}>
       {/* Title */}
       <Typography variant="h4">
-        Restaurants, Hotels and Attractions near you
+        {type.charAt(0).toUpperCase()+type.slice(1)} near you
       </Typography>
       {/* Display loading symbol if we're scrolling to a specific place, otherwise run the FormControl onwards */}
       {isLoading ? (
@@ -77,11 +78,10 @@ const List = ({
         <>
           {/* Creating a form for the type of place filter */}
           <FormControl className={classes.formControl}>
-            <InputLabel>Type</InputLabel>
             {/* where we can select from the different types.
             OnChange allows us to define an event that sets the type to whatever is selected from the MenuItem values below.
             e is a placeholder for the type to setType mapping */}
-            <Select value={type} onChange={(e) => setType(e.target.value)}>
+            <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
               <MenuItem value="restaurants">Restaurants</MenuItem>
               <MenuItem value="hotels">Hotels</MenuItem>
               <MenuItem value="attractions">Attractions</MenuItem>
@@ -90,17 +90,18 @@ const List = ({
 
           {/* Creating a form for the rating filter */}
           <FormControl className={classes.formControl}>
-            <InputLabel>Rating</InputLabel>
+            <InputLabel id="rating">Rating</InputLabel>
             {/* where we can select from the different types.
-            OnChange allows us to define an event that sets the type to whatever is selected from the MenuItem values below.
-            e is a placeholder for the type to setType mapping */}
-            <Select value={rating} onChange={(e) => setRating(e.target.value)}>
+            OnChange allows us to define an event that sets the rating to whatever is selected from the MenuItem values below.
+            e is a placeholder for the rating to setRating mapping */}
+            <Select id="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
               <MenuItem value={0}>All</MenuItem>
               <MenuItem value={3}>Above 3.0</MenuItem>
               <MenuItem value={4}>Above 4.0</MenuItem>
               <MenuItem value={4.5}>Above 4.5</MenuItem>
             </Select>
           </FormControl>
+
 
           {/* Displaying the list of places */}
           <Grid container spacing={3} className={classes.list}>
@@ -110,7 +111,7 @@ const List = ({
             We only need a set of parentheses for the callback because we're instantly going to return a piece of JSX.*/}
             {places?.map((place, i) => (
               /* xs means 12/12 container width */
-              <Grid item key={i} xs={12}>
+              <Grid ref={elRefs[i]} item key={i} xs={12}>
                 {" "}
                 <PlaceDetails
                   /* The place object is passed as a prop called place TO the PlaceDetails component, 
@@ -118,7 +119,7 @@ const List = ({
                   place={place}
                   /* Determine whether the PlaceDetails component should be displayed as "selected" or not. 
                     Passed as a prop to PlaceDetails */
-                  selected={Number(childClicked) == i}
+                  selected={Number(childClicked) === i}
                   /* Assign a unique reference to each place object's div element. 
                     Passed as a prop to PlaceDetails */
                   refProp={elRefs[i]}

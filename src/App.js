@@ -13,7 +13,7 @@ import Header from "./components/Header/Header";
 import List from "./components/List/List";
 import Map from "./components/Map/Map";
 
-import { getPlacesData } from "./api";
+import { getPlacesData } from "./api/index";
 
 const App = () => {
   /*
@@ -44,7 +44,6 @@ const App = () => {
   //Variable to set rating filter, defaults to empty string
   const [rating, setRating] = useState("");
 
-
   /*
     ------------------------------------DECLARING USEEFFECTS---------------------------------------------------------------------------
   */
@@ -64,7 +63,7 @@ const App = () => {
   Filter places based on the rating dropdown selection
   */
   useEffect(() => {
-    const filteredPlaces = places.filter((place) => place.rating > rating);
+    const filteredPlaces = places.filter((place) => Number(place.rating) > rating);
     setFilteredPlaces(filteredPlaces);
   }, [rating]);
 
@@ -75,14 +74,16 @@ const App = () => {
   */
   useEffect(() => {
     setIsLoading(true); //at the beginning of the useEffect, display loading symbol
-    getPlacesData(bounds.sw, bounds.ne).then((data) => {
+    console.log('south west is ' + bounds.sw);
+    console.log('north east is:' + bounds.ne);
+    getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
+      console.log('data before setPlacesData is ' + data);
       setPlaces(data); //update the places array with the output of the function setPlaces
       setFilteredPlaces([]); //set filteredPlaces back to an empty array
       setIsLoading(false); //once setPlaces has happened, stop loading symbol
     });
-  }, [type, coordinates, bounds]); //dependencies to run this useEffect if type, coordinates or bounds change
+  }, [type, bounds]); //dependencies to run this useEffect if type, coordinates or bounds change
 
-  
   /*
     ------------------------------------RENDERING COMPONENTS---------------------------------------------------------------------------
   */
@@ -109,6 +110,7 @@ const App = () => {
             setRating={setRating}
           />
         </Grid>
+
         <Grid item xs={12} md={8}>
           <Map
             // passing setter functions to Map as props

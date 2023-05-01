@@ -17,9 +17,8 @@ import {
   Chip,
   Rating,
 } from "@mui/material";
-import { LocationOnOutlined } from "@mui/icons-material";
-import { Phone } from "@mui/icons-material";
-import Rating from "@mui/material";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from "@mui/icons-material/Phone";
 import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
 
 /*

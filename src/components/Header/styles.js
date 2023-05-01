@@ -1,4 +1,4 @@
-import { alpha, makeStyles } from "@mui/material";
+import { alpha, makeStyles } from "@mui/styles";
 
 /* note that this is a callback function 
 https://developer.mozilla.org/en-US/docs/Glossary/Callback_function
@@ -21,30 +21,7 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
-  },
-
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": { backgroundColor: alpha(theme.palette.common.white, 0.25) },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  },
-
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    color: "#000",
   },
 
   inputRoot: {
@@ -62,5 +39,6 @@ export default makeStyles((theme) => ({
   toolbar: {
     display: "flex",
     justifyContent: "space-between",
+    backgroundColor: "#ddd",
   },
 }));

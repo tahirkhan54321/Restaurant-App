@@ -1,4 +1,4 @@
-import { makeStyles } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 /* note that this is a callback function 
 https://developer.mozilla.org/en-US/docs/Glossary/Callback_function
@@ -17,21 +17,28 @@ https://mui.com/blog/callback-support-in-style-overrides/
 
 export default makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1), minWidth: 120, marginBottom: '30px',
+    margin: 10,
+    width: "40%",
+    minWidth: 120,
+    marginBottom: "30px",
   },
   selectEmpty: {
-    marginTop: theme.spacing(2),
+    marginTop: 20,
   },
   loading: {
-    height: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center',
+    height: "600px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   container: {
-    padding: '25px',
+    padding: "25px",
   },
   marginBottom: {
-    marginBottom: '30px',
+    marginBottom: "30px",
   },
   list: {
-    height: '75vh', overflow: 'auto',
+    height: "75vh",
+    overflow: "auto",
   },
 }));

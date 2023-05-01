@@ -1,4 +1,4 @@
-import { makeStyles } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 /* note that this is a callback function 
 https://developer.mozilla.org/en-US/docs/Glossary/Callback_function
@@ -17,12 +17,17 @@ https://mui.com/blog/callback-support-in-style-overrides/
 
 export default makeStyles(() => ({
   chip: {
-    margin: '5px 5px 5px 0',
+    margin: "5px 5px 5px 0",
   },
   subtitle: {
-    display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '10px',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: "10px",
   },
   spacing: {
-    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 }));

@@ -5,9 +5,8 @@ Map takes in several props from App.js
 
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import { Paper, Typography, useMediaQuery } from "@mui/material"; //useMediaQuery helps with making map more responsive
+import { Paper, Typography, useMediaQuery, Rating } from "@mui/material"; //useMediaQuery helps with making map more responsive
 import { LocationOnOutlined } from "@mui/icons-material";
-import Rating from "@mui/material";
 
 import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
 
