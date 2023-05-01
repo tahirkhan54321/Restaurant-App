@@ -18,7 +18,7 @@ import {
   Rating,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection";
+import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //RF
 import PhoneIcon from "@mui/icons-material/Phone";
 import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
 
@@ -76,7 +76,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.price_level}
           </Typography>
         </Box>
-        {/* Show the distance between user and restaurant*/}
+        {/* RF - Show the distance between user and restaurant*/}
         {place?.distance_string && (
           <Typography
             variant="body2"
@@ -88,14 +88,14 @@ const PlaceDetails = ({ place, selected, refProp }) => {
           </Typography>
         )}
         {/*Display the ranking in a box with some margin at the bottom */}
-        <Box display="flex" justifyContent="space-between">
+        {/* <Box display="flex" justifyContent="space-between">
           <Typography variant="subtitle1">Ranking</Typography>
           <Typography gutterBottom variant="subtitle1">
             {place.ranking}
           </Typography>
-        </Box>
+        </Box> */}
         {/*Iterate over and display all the awards the place has achieved. Todo: get rid of this, unnecessary */}
-        {place?.awards?.map((award) => (
+        {/* {place?.awards?.map((award) => (
           <Box
             display="flex"
             justifyContent="space-between"
@@ -107,7 +107,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
               {award.display_name}
             </Typography>
           </Box>
-        ))}
+        ))} */}
         {/*Iterate over cuisines and display a chip for each one, if the place exists and the cuisine exists. Todo: use chip or not?*/}
         {place?.cuisine?.map(({ name }) => (
           <Chip key={name} size="small" label={name} className={classes.chip} />
@@ -136,13 +136,13 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         )}
         {/*Displays clickable buttons for the tripadvisor site and the place website */}
         <CardActions>
-          <Button
+          {/* <Button
             size="small"
             color="primary"
             onClick={() => window.open(place.web_url, "_blank")}
           >
             Trip Advisor
-          </Button>
+          </Button> */}
           <Button
             size="small"
             color="primary"

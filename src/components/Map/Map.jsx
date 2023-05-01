@@ -5,7 +5,8 @@ Map takes in several props from App.js
 
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import { Paper, Typography, useMediaQuery, Rating } from "@mui/material"; //useMediaQuery helps with making map more responsive
+import { Paper, Typography, useMediaQuery, Rating, Chip } from "@mui/material"; //useMediaQuery helps with making map more responsive
+import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //RF
 import { LocationOnOutlined } from "@mui/icons-material";
 
 import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
@@ -84,8 +85,18 @@ const Map = ({
                 >
                   {place.name}
                 </Typography>
+                {/*Iterate over cuisines and display a chip for each one, if the place exists and the cuisine exists. Todo: use chip or not?*/}
+                {place?.cuisine?.slice(0, 1).map(({ name }) => (
+                  <Chip
+                    key={name}
+                    size="small"
+                    label={name}
+                    className={classes.chip}
+                  />
+                ))}
+
                 {/* display image */}
-                <img
+                {/* <img
                   className={classes.pointer}
                   src={
                     place.photo
@@ -93,9 +104,21 @@ const Map = ({
                       : "https://burst.shopifycdn.com/photos/table-for-two.jpg?width=1850&format=pjpg&exif=1&iptc=1"
                   }
                   alt={place.name}
-                />
+                /> */}
                 {/* display rating */}
                 <Rating size="small" value={Number(place.rating)} readOnly />
+                {/* RF - Show the distance between user and restaurant*/}
+                {place?.distance_string && (
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    className={classes.spacing}
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <AssistantDirectionIcon style={{ marginRight: '0.15rem' }} />
+                    {place.distance_string}
+                  </Typography>
+                )}
               </Paper>
             )}
           </div>
