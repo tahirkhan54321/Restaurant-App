@@ -8,6 +8,7 @@ import GoogleMapReact from "google-map-react";
 import { Paper, Typography, useMediaQuery, Rating, Chip } from "@mui/material"; //useMediaQuery helps with making map responsive
 import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //RF
 import { LocationOnOutlined } from "@mui/icons-material";
+import AlarmOnIcon from "@mui/icons-material/AlarmOn"; // BYZ, QF
 
 import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
 
@@ -85,7 +86,7 @@ const Map = ({
                 >
                   {place.name}
                 </Typography>
-                {/*Iterate over cuisines and display a chip for each one, if the place exists and the cuisine exists. Todo: use chip or not?*/}
+                {/* Iterate over cuisines and display a chip for each one, if the place exists and the cuisine exists. Todo: use chip or not?
                 {place?.cuisine?.slice(0, 1).map(({ name }) => (
                   <Chip
                     key={name}
@@ -93,7 +94,8 @@ const Map = ({
                     label={name}
                     className={classes.chip}
                   />
-                ))}
+                ))} */}
+
 
                 {/* display image */}
                 {/* <img
@@ -107,6 +109,17 @@ const Map = ({
                 /> */}
                 {/* display rating */}
                 <Rating size="small" value={Number(place.rating)} readOnly />
+        {/* BYZ, QF - Opening hour */}
+        {place?.open_now_text && (
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.spacing}
+          >
+          <AlarmOnIcon />
+            {place.open_now_text}
+          </Typography>
+        )}
                 {/* RF - Show the distance between user and restaurant*/}
                 {place?.distance_string && (
                   <Typography
