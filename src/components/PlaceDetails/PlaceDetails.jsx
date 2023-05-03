@@ -21,6 +21,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //RF
 import PhoneIcon from "@mui/icons-material/Phone";
 import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
+import AccessTimeIcon from "@mui/icons-material/AccessTime"; // BYZ, QF
+import AlarmOnIcon from "@mui/icons-material/AlarmOn"; // BYZ, QF
 
 /*
     ------------------------------------CREATE PLACEDETAILS---------------------------------------------------------------------------
@@ -34,6 +36,10 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   /* adding styling for use in the remainder of the class, note that we call this as though it were a React hook 
     note that this doesn't work anymore and will need to be replaced */
   const classes = useStyles();
+
+  /* BYZ, QF
+  for calculating the walking time, average walking pace for a human is 5km/h */
+  const walkingSpeed = 5;
 
   /* if a place from the List has been selected, scroll to it */
   if (selected)
@@ -76,17 +82,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.price_level}
           </Typography>
         </Box>
-        {/* RF - Show the distance between user and restaurant*/}
-        {place?.distance_string && (
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            className={classes.spacing}
-          >
-            <AssistantDirectionIcon />
-            {place.distance_string}
-          </Typography>
-        )}
         {/*Display the ranking in a box with some margin at the bottom */}
         {/* <Box display="flex" justifyContent="space-between">
           <Typography variant="subtitle1">Ranking</Typography>
@@ -132,6 +127,40 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             className={classes.spacing}
           >
             <PhoneIcon /> {place.phone}
+          </Typography>
+        )}
+        {/* QF - Show the distance between user and restaurant*/}
+        {place?.distance_string && (
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.distance}
+          >
+            <AssistantDirectionIcon />
+            {place.distance_string}
+          </Typography>
+        )}
+        {/** BYZ, QF - Walking time calculation */}
+        {place?.distance_string && (
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.spacing}
+          >
+            <AccessTimeIcon />
+            {(Number.parseFloat(place.distance / walkingSpeed) * 60).toFixed(0)}
+            mins
+          </Typography>
+        )}
+        {/* BYZ, QF - Opening hour */}
+        {place?.open_now_text && (
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.spacing}
+          >
+          <AlarmOnIcon />
+            {place.open_now_text}
           </Typography>
         )}
         {/*Displays clickable buttons for the tripadvisor site and the place website */}

@@ -30,4 +30,11 @@ export default makeStyles(() => ({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  //RF
+  distance: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: "20px",
+  },
 }));

@@ -5,7 +5,7 @@ Map takes in several props from App.js
 
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import { Paper, Typography, useMediaQuery, Rating, Chip } from "@mui/material"; //useMediaQuery helps with making map more responsive
+import { Paper, Typography, useMediaQuery, Rating, Chip } from "@mui/material"; //useMediaQuery helps with making map responsive
 import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //RF
 import { LocationOnOutlined } from "@mui/icons-material";
 
@@ -115,7 +115,9 @@ const Map = ({
                     className={classes.spacing}
                     style={{ display: "flex", alignItems: "center" }}
                   >
-                    <AssistantDirectionIcon style={{ marginRight: '0.15rem' }} />
+                    <AssistantDirectionIcon
+                      style={{ marginRight: "0.15rem" }}
+                    />
                     {place.distance_string}
                   </Typography>
                 )}
