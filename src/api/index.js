@@ -23,7 +23,7 @@ export const getPlacesData = async (type, sw, ne) => {
       data: { data },
     } = await axios.get(
       //Note that the ${type} is only used for the type of place e.g. retaurants, hotels, attractions
-      `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`,
+      `https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary`,
       {
         //note that these are the options from the original API request, moved inside for asynchronicity
         params: {

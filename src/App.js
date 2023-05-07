@@ -38,8 +38,8 @@ const App = () => {
   //Variable to give loading symbol (circular progress) to List
   const [isLoading, setIsLoading] = useState(false);
 
-  //Variable to set type of place (restaurant, hotel, attraction), defaults to restaurants. Used for filter
-  const [type, setType] = useState("restaurants");
+  //YL - Variable to set type of place (restaurant, hotel, attraction), defaults to restaurants. Used for filter
+  const [type, setType] = useState("All");
 
   //Variable to set rating filter, defaults to empty string
   const [rating, setRating] = useState("");
@@ -63,26 +63,57 @@ const App = () => {
   Filter places based on the rating dropdown selection
   */
   useEffect(() => {
-    const filteredPlaces = places.filter((place) => Number(place.rating) > rating);
+    const filteredPlaces = places.filter(
+      (place) => Number(place.rating) > rating
+    );
     setFilteredPlaces(filteredPlaces);
   }, [rating]);
 
   /* 
-  Whenever type, coordinates or bounds change, getPlacesData (API call) is rerun.
+  YL - Whenever type, bounds change, getPlacesData (API call) is rerun.
   Note that .then is needed because this is an async request and needs to take in a callback function. See JS 'Promises'.
   setPlaces, setFilteredPlaces and setIsLoading are also updated.
   */
   useEffect(() => {
     setIsLoading(true); //at the beginning of the useEffect, display loading symbol
-    console.log('south west is ' + bounds.sw);
-    console.log('north east is:' + bounds.ne);
+    console.log("south west is " + bounds.sw);
+    console.log("north east is:" + bounds.ne);
     getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-      console.log('data before setPlacesData is ' + data);
-      setPlaces(data); //update the places array with the output of the function setPlaces
+      console.log("data before setPlacesData is " + data);
+      // setPlaces(data); //update the places array with the output of the function setPlaces
       setFilteredPlaces([]); //set filteredPlaces back to an empty array
+      // YL - if the cuisine is selected, then return only the places that match the cuisine, otherwise filter by cuisine
+      if (type === "All") {
+        setPlaces(data);
+      } else {
+        const filteredPlaces = places.filter((place) =>
+          place.cuisine?.some((cuisine) => cuisine.name === type)
+        );
+        setFilteredPlaces(filteredPlaces);
+      }
       setIsLoading(false); //once setPlaces has happened, stop loading symbol
     });
   }, [type, bounds]); //dependencies to run this useEffect if type, coordinates or bounds change
+
+  // useEffect(() => {
+  //   setIsLoading(true); //at the beginning of the useEffect, display loading symbol
+  //   console.log("south west is " + bounds.sw);
+  //   console.log("north east is:" + bounds.ne);
+  //   getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
+  //     console.log("data before setPlacesData is " + data); // setPlaces(data); //update the places array with the output of the function setPlaces
+  //     setFilteredPlaces([]); //set filteredPlaces back to an empty array // //if the cuisine is not be selected, then return all places
+  //     if (type === "All") {
+  //       setPlaces(data);
+  //     } //if the cuisine is selected, then return only the places that match the cuisine
+  //     else {
+  //       const filteredPlaces = places.filter((place) =>
+  //         place.cuisine?.some((cuisine) => cuisine.name === cuisine)
+  //       );
+  //       setFilteredPlaces(filteredPlaces);
+  //     }
+  //     setIsLoading(false); //once setPlaces has happened, stop loading symbol
+  //   });
+  // }, [type, bounds]); //dependencies to run this useEffect if cuisine, coordinates or bounds change
 
   /*
     ------------------------------------RENDERING COMPONENTS---------------------------------------------------------------------------
@@ -99,7 +130,7 @@ const App = () => {
           {/* passing the places prop to the List component (filteredPlaces if that array is non-empty)
               passing the childClicked prop to the List
               passing loading status prop to the List 
-              passing type, setType and rating, setRating to List */}
+              passing type, setType and rating, setRating props to List */}
           <List
             places={filteredPlaces.length ? filteredPlaces : places}
             childClicked={childClicked}

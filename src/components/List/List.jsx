@@ -13,7 +13,6 @@ import {
   MenuItem,
   FormControl,
   Select,
-  Input,
 } from "@mui/material";
 
 import useStyles from "./styles"; //note that this does not work anymore and will need to be replaced
@@ -32,7 +31,6 @@ const List = ({
   rating,
   setRating,
 }) => {
-
   /*
     ------------------------------------DECLARING VARIABLES---------------------------------------------------------------------------
   */
@@ -44,20 +42,18 @@ const List = ({
   /* Element references for the places that have been clicked on to scroll to the place in the List */
   const [elRefs, setElRefs] = useState([]);
 
-
   /*
     ------------------------------------DECLARING USEEFFECTS---------------------------------------------------------------------------
   */
 
   /* Helps to scroll to the place in the List. Call this useEffect every time the places array changes. */
   useEffect(() => {
-    var refs = []
+    var refs = [];
     refs = Array(places?.length)
       .fill()
       .map((_, i) => refs[i] || createRef());
     setElRefs(refs);
   }, [places]);
-
 
   /*
     ------------------------------------DEFINE LIST---------------------------------------------------------------------------
@@ -67,7 +63,7 @@ const List = ({
     <div className={classes.container}>
       {/* Title */}
       <Typography variant="h4">
-        {type.charAt(0).toUpperCase()+type.slice(1)} near you
+        {type.charAt(0).toUpperCase() + type.slice(1)} near you
       </Typography>
       {/* Display loading symbol if we're scrolling to a specific place, otherwise run the FormControl onwards */}
       {isLoading ? (
@@ -76,15 +72,42 @@ const List = ({
         </div>
       ) : (
         <>
-          {/* Creating a form for the type of place filter */}
+          {/* Creating a form for the type of place filter
           <FormControl className={classes.formControl}>
             {/* where we can select from the different types.
             OnChange allows us to define an event that sets the type to whatever is selected from the MenuItem values below.
             e is a placeholder for the type to setType mapping */}
-            <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
+          {/* <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
               <MenuItem value="restaurants">Restaurants</MenuItem>
               <MenuItem value="hotels">Hotels</MenuItem>
               <MenuItem value="attractions">Attractions</MenuItem>
+            </Select>
+          </FormControl> */}
+
+          <FormControl className={classes.formControl}>
+            {/* where we can select from the different types.
+            OnChange allows us to define an event that sets the cuisine to whatever is selected from the MenuItem values below.
+            e is a placeholder for the cuisine to setCuisine mapping */}
+            <Select
+              id="type"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+            >
+              <MenuItem value="All">All</MenuItem>
+              <MenuItem value="American">American</MenuItem>
+              <MenuItem value="Asian">Asian</MenuItem>
+              <MenuItem value="British">British</MenuItem>
+              <MenuItem value="Caribbean">Caribbean</MenuItem>
+              <MenuItem value="French">French</MenuItem>
+              <MenuItem value="Greek">Greek</MenuItem>
+              <MenuItem value="Indian">Indian</MenuItem>
+              <MenuItem value="Italian">Italian</MenuItem>
+              <MenuItem value="Japanese">Japanese</MenuItem>
+              <MenuItem value="Mediterranean">Mediterranean</MenuItem>
+              <MenuItem value="Seafood">Seafood</MenuItem>
+
+              {/* <MenuItem value="hotels">Hotels</MenuItem>
+              <MenuItem value="attractions">Attractions</MenuItem> */}
             </Select>
           </FormControl>
 
@@ -94,15 +117,17 @@ const List = ({
             {/* where we can select from the different types.
             OnChange allows us to define an event that sets the rating to whatever is selected from the MenuItem values below.
             e is a placeholder for the rating to setRating mapping */}
-            <Select id="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
+            <Select
+              id="rating"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+            >
               <MenuItem value={0}>All</MenuItem>
               <MenuItem value={3}>Above 3.0</MenuItem>
               <MenuItem value={4}>Above 4.0</MenuItem>
               <MenuItem value={4.5}>Above 4.5</MenuItem>
             </Select>
           </FormControl>
-
-
           {/* Displaying the list of places */}
           <Grid container spacing={3} className={classes.list}>
             {/* Think of this as a for-each loop. 
