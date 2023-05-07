@@ -3,12 +3,10 @@
 */
 
 import React from "react";
-import {
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { Toolbar, Typography } from "@mui/material";
 import { AppBar } from "@mui/material";
 import useStyles from "./styles"; //import styling
+import Truck from "./Truck/Truck";
 
 /*
   ------------------------------------CREATE HEADER---------------------------------------------------------------------------
@@ -30,8 +28,21 @@ const Header = () => {
             maxHeight: 120,
           }}
         />
+        <div
+          className="Truck-container"
+          style={{
+            width: "74vw",
+            position: "absolute",
+            height: "100%",
+            maxHeight: 120,
+            left: 130,
+            display: "block",
+          }}
+        >
+          <Truck />
+        </div>
         {/* adding title */}
-        <Typography variant="h5" className={classes.title}>
+        <Typography variant="h4" className={classes.title}>
           One Mile Munch
         </Typography>
         {/* adding subtitle MUI box */}
