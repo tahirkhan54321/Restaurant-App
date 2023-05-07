@@ -1,3 +1,14 @@
+/*
+Author - Tahir Khan (TK)
+Modifying authors - None
+Reference: the core structure is taken from Youtube:
+  https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
+  Original Author - YouTube, Javascript Mastery
+  Modifying Author – Tahir Khan
+
+A class which defines styling features for the Map class
+*/
+
 import { makeStyles } from "@mui/styles";
 
 /* note that this is a callback function 
@@ -25,8 +36,9 @@ export default makeStyles(() => ({
     border: "0.5px solid",
   },
   mapContainer: {
-    height: "85vh",
+    height: "84vh",
     width: "100%",
+    marginTop: "5px"
   },
   markerContainer: {
     position: "absolute",

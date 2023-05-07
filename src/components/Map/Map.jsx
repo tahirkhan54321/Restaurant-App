@@ -1,4 +1,11 @@
 /*
+Author - Tahir Khan (TK)
+Modifying authors - Biyuan Zhao (BYZ), Qi Fu (QF)
+Reference: the core structure is taken from Youtube:
+  https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
+  Original Author - YouTube, Javascript Mastery
+  Modifying Author – Tahir Khan
+
 A class which displays the map
 Map takes in several props from App.js
 */
@@ -6,7 +13,7 @@ Map takes in several props from App.js
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import { Paper, Typography, useMediaQuery, Rating } from "@mui/material"; //useMediaQuery helps with making map responsive
-import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //RF
+import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //QF
 import { LocationOnOutlined } from "@mui/icons-material";
 import AlarmOnIcon from "@mui/icons-material/AlarmOn"; // BYZ, QF
 
@@ -32,7 +39,7 @@ const Map = ({
   const classes = useStyles();
 
   /* checking to see if the device is desktop or not and storing in variable, if width of the device is >600px, isMobile is false */
-  const isDesktop = useMediaQuery("(min-width:600px)");
+  const isDesktop = useMediaQuery("(min-width:899px)");
 
   /*
     ------------------------------------DEFINE MAP---------------------------------------------------------------------------

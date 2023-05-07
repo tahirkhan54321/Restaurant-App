@@ -1,4 +1,11 @@
 /*
+Author - Tahir Khan (TK)
+Modifying authors - Mallika Misra (MM), Yanting Li (YL)
+Reference: the core structure is taken from Youtube:
+  https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
+  Original Author - YouTube, Javascript Mastery
+  Modifying Author – Tahir Khan
+    
 A class which displays the list side panel. 
 It calls PlaceDetails components which fill out each 'card' in the panel.
 List takes in several props from App.js
@@ -61,8 +68,8 @@ const List = ({
   return (
     <div className={classes.container}>
       {/* MM - Title */}
-      <Typography variant="h4">
-        {type.charAt(0).toUpperCase() + type.slice(1)} near you
+      <Typography variant="h4" className={classes.title}>
+        {type.charAt(0).toUpperCase() + type.slice(1)} restaurants near you
       </Typography>
       {/* Display loading symbol if we're scrolling to a specific place, otherwise run the FormControl onwards */}
       {isLoading ? (
@@ -112,7 +119,7 @@ const List = ({
             </Select>
           </FormControl>
           {/* Displaying the list of places */}
-          <Grid container spacing={2.5} className={classes.list}>
+          <Grid container spacing={2.5} className={classes.scrolllist}>
             {/* Think of this as a for-each loop. Only if you have places, map over them. 
             Map takes in a callback function and in each iteration of the callback, it has one new place. Takes in place and an index.
             We only need a set of parentheses for the callback because we're instantly going to return a piece of JSX.*/}

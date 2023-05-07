@@ -1,6 +1,13 @@
 /*
-    A class which handles the API call and exports it as a function
-  */
+Author - Tahir Khan (TK)
+Modifying authors - Shilin Li (SL)
+Reference: the core structure is taken from Youtube:
+https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
+Original Author - YouTube, Javascript Mastery
+Modifying Author – Tahir Khan
+
+A class which handles the API call and exports it as a function
+*/
 
 import axios from "axios"; /* axios is a library that will help us make our API calls */
 
@@ -14,7 +21,7 @@ an asynchronous function which will allow App.js to make the API call, takes in 
 
 export const getPlacesData = async (type, sw, ne) => {
   try {
-    // make the API request using parameters for URL and options. https://rapidapi.com/apidojo/api/travel-advisor
+    //SL - make the API request using parameters for URL and options. https://rapidapi.com/apidojo/api/travel-advisor
     //note that this uses destructuring and we are using a template string
     const {
       data: { data },

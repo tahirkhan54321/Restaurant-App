@@ -1,5 +1,10 @@
+/*
+Author - Mallika Misra (MM)
+Modifying authors - None
+*/
+
 import "./Truck.css";
-// import truckImage from './transport-vehicle-car-logo-truck-png-favpng-wbXSbsURmhyiQ5qDKW2esEcz1-removebg-preview.png';
+// import truckImage from './truck-removebg-preview.png';
 const Truck = () => {
   return (
     <img

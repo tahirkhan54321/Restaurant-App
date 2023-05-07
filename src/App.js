@@ -1,4 +1,11 @@
 /* 
+Author - Tahir Khan (TK)
+Modifying authors - Yanting Li (YL), Tom Romano (TR)
+Reference: the core structure is taken from Youtube:
+  https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
+  Original Author - YouTube, Javascript Mastery
+  Modifying Author – Tahir Khan
+
 Driver class which renders all the components.
 It uses the following structure:
 Header

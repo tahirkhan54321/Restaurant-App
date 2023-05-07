@@ -1,4 +1,16 @@
-import { alpha, makeStyles } from "@mui/styles";
+/*
+Author - Tahir Khan (TK)
+Modifying authors - Mallika Misra (MM)
+Reference: the core structure is taken from Youtube:
+  https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
+  Original Author - YouTube, Javascript Mastery
+  Modifying Author – Tahir Khan
+
+A class which defines styling features for the Header class
+*/
+
+import { makeStyles } from "@mui/styles";
+
 
 /* note that this is a callback function 
 https://developer.mozilla.org/en-US/docs/Glossary/Callback_function
@@ -21,24 +33,14 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
-    color: "#000",
-  },
-
-  inputRoot: {
-    color: "inherit",
-  },
-
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: { width: "20ch" },
+    color: "#474747",
+    fontWeight: "bold",
+    fontFamily: "'Helvetica', sans-serif",
   },
 
   toolbar: {
     display: "flex",
     justifyContent: "space-between",
-    backgroundColor: "#ddd",
+    backgroundColor: "#ddd", //MM
   },
 }));

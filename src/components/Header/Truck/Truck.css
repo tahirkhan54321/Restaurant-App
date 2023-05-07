@@ -1,3 +1,8 @@
+/*
+Author - Mallika Misra (MM)
+Modifying authors - None
+*/
+
 @keyframes move-truck {
     0% {
       /* transform: translateX(-100%); */
@@ -15,4 +20,5 @@
     height: 100%;
     max-height: 120;
     display: block;
+    opacity: 69%;
   }

@@ -1,3 +1,14 @@
+/*
+Author - Tahir Khan (TK)
+Modifying authors - Qi Fu (QF)
+Reference: the core structure is taken from Youtube:
+  https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
+  Original Author - YouTube, Javascript Mastery
+  Modifying Author – Tahir Khan
+
+A class which defines styling features for the PlaceDetails class
+*/
+
 import { makeStyles } from "@mui/styles";
 
 /* note that this is a callback function 
@@ -16,6 +27,9 @@ https://mui.com/blog/callback-support-in-style-overrides/
 */
 
 export default makeStyles(() => ({
+  title: {
+    fontFamily: "'Helvetica', sans-serif",
+  },
   chip: {
     margin: "5px 5px 5px 0",
   },
@@ -23,18 +37,23 @@ export default makeStyles(() => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: "10px",
+    paddingTop: "10px",
   },
+  //QF
   spacing: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    paddingTop: "4px",
   },
-  //RF
   distance: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: "20px",
+  },
+  website: {
+    border: "1px solid black",
+    backgroundColor: "darkgrey",
   },
 }));

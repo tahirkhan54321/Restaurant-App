@@ -1,4 +1,11 @@
 /*
+Author - Tahir Khan (TK)
+Modifying authors - Biyuan Zhao (BYZ), Qi Fu (QF)
+Reference: the core structure is taken from Youtube:
+  https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
+  Original Author - YouTube, Javascript Mastery
+  Modifying Author – Tahir Khan
+
 A class which displays details ('cards') about each individual place in the List. 
 These are then stacked on one another within the List.
 PlaceDetails takes in several props from App.js
@@ -50,11 +57,11 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 
   return (
     //wrapping everything inside an MUI card component
-    <Card elevation={6}>
+    <Card elevation={6} style={{ paddingRight: "5px" }}>
       {/*An MUI card which is used to display images*/}
       <CardMedia
         style={{ height: 225 }}
-        //if the is an image, use it. If not, use a royalty free default
+        //if the is an image, use it. If not, use a royalty-free default
         image={
           place.photo
             ? place.photo.images.large.url
@@ -64,7 +71,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
       />
       <CardContent>
         {/*Display the place name with some margin at the bottom */}
-        <Typography gutterBottom variant="h5">
+        <Typography gutterBottom variant="h5" className={classes.title}>
           {place.name}
         </Typography>
         {/*Display the rating */}
@@ -81,27 +88,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.price_level}
           </Typography>
         </Box>
-        {/*Display the ranking in a box with some margin at the bottom */}
-        {/* <Box display="flex" justifyContent="space-between">
-          <Typography variant="subtitle1">Ranking</Typography>
-          <Typography gutterBottom variant="subtitle1">
-            {place.ranking}
-          </Typography>
-        </Box> */}
-        {/*Iterate over and display all the awards the place has achieved. Todo: get rid of this, unnecessary */}
-        {/* {place?.awards?.map((award) => (
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            my={1}
-            alignItems="center"
-          >
-            <img src={award.images.small} />
-            <Typography variant="subtitle2" color="textSecondary">
-              {award.display_name}
-            </Typography>
-          </Box>
-        ))} */}
         {/*Iterate over cuisines and display a chip for each one, if the place exists and the cuisine exists. Todo: use chip or not?*/}
         {place?.cuisine?.map(({ name }) => (
           <Chip key={name} size="small" label={name} className={classes.chip} />
@@ -158,7 +144,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             color="textSecondary"
             className={classes.spacing}
           >
-          <AlarmOnIcon />
+            <AlarmOnIcon />
             {place.open_now_text}
           </Typography>
         )}
@@ -166,8 +152,9 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         <CardActions>
           <Button
             size="small"
-            color="primary"
+            // color="primary"
             onClick={() => window.open(place.website, "_blank")}
+            className={classes.website}
           >
             Website
           </Button>

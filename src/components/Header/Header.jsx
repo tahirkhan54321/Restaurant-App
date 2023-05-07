@@ -1,12 +1,19 @@
 /*
-  A class which defines how the header should look and which information should be in it
+Author - Tahir Khan (TK)
+Modifying authors - Mallika Misra (MM)
+Reference: the core structure is taken from Youtube:
+  https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
+  Original Author - YouTube, Javascript Mastery
+  Modifying Author – Tahir Khan
+
+A class which defines how the header should look and which information should be in it
 */
 
 import React from "react";
 import { Toolbar, Typography } from "@mui/material";
 import { AppBar } from "@mui/material";
 import useStyles from "./styles"; //import styling
-import Truck from "./Truck/Truck";
+import Truck from "./Truck/Truck"; //MM - import truck animation
 
 /*
   ------------------------------------CREATE HEADER---------------------------------------------------------------------------
@@ -20,7 +27,7 @@ const Header = () => {
     <AppBar position="static">
       {/* within MUI appbar, add a toolbar */}
       <Toolbar className={classes.toolbar}>
-        {/* adding logo */}
+        {/* MM - adding logo */}
         <img
           src="logo.jfif"
           style={{
@@ -28,6 +35,7 @@ const Header = () => {
             maxHeight: 120,
           }}
         />
+        {/* MM - adding Truck animation */}
         <div
           className="Truck-container"
           style={{
