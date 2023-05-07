@@ -17,7 +17,8 @@ https://mui.com/blog/callback-support-in-style-overrides/
 
 export default makeStyles((theme) => ({
   formControl: {
-    margin: 10,
+    marginLeft: 10,
+    marginRight: 10,
     width: "40%",
     minWidth: 120,
     marginBottom: "30px",
@@ -32,13 +33,14 @@ export default makeStyles((theme) => ({
     alignItems: "center",
   },
   container: {
-    padding: "25px",
+    padding: "10px",
   },
   marginBottom: {
-    marginBottom: "30px",
+    marginBottom: "5px",
   },
   list: {
     height: "65vh",
     overflow: "auto",
+    marginTop: "20px !important",
   },
 }));

@@ -15,7 +15,7 @@ import {
   Select,
 } from "@mui/material";
 
-import useStyles from "./styles"; //note that this does not work anymore and will need to be replaced
+import useStyles from "./styles"; //import styling
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 
 /*
@@ -35,8 +35,7 @@ const List = ({
     ------------------------------------DECLARING VARIABLES---------------------------------------------------------------------------
   */
 
-  /* adding styling for use in the remainder of the class, note that we call this as though it were a React hook 
-    note that this doesn't work anymore and will need to be replaced */
+  /* adding styling for use in the remainder of the class, note that we call this as though it were a React hook */
   const classes = useStyles();
 
   /* Element references for the places that have been clicked on to scroll to the place in the List */
@@ -61,7 +60,7 @@ const List = ({
 
   return (
     <div className={classes.container}>
-      {/* Title */}
+      {/* MM - Title */}
       <Typography variant="h4">
         {type.charAt(0).toUpperCase() + type.slice(1)} near you
       </Typography>
@@ -72,21 +71,9 @@ const List = ({
         </div>
       ) : (
         <>
-          {/* Creating a form for the type of place filter
+        {/* YL - Creating a form for the cuisine type filter */}
           <FormControl className={classes.formControl}>
-            {/* where we can select from the different types.
-            OnChange allows us to define an event that sets the type to whatever is selected from the MenuItem values below.
-            e is a placeholder for the type to setType mapping */}
-          {/* <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
-              <MenuItem value="restaurants">Restaurants</MenuItem>
-              <MenuItem value="hotels">Hotels</MenuItem>
-              <MenuItem value="attractions">Attractions</MenuItem>
-            </Select>
-          </FormControl> */}
-
-          <FormControl className={classes.formControl}>
-            {/* where we can select from the different types.
-            OnChange allows us to define an event that sets the cuisine to whatever is selected from the MenuItem values below.
+            {/* OnChange allows us to define an event that sets the cuisine to whatever is selected from the MenuItem values below.
             e is a placeholder for the cuisine to setCuisine mapping */}
             <Select
               id="type"
@@ -105,17 +92,13 @@ const List = ({
               <MenuItem value="Japanese">Japanese</MenuItem>
               <MenuItem value="Mediterranean">Mediterranean</MenuItem>
               <MenuItem value="Seafood">Seafood</MenuItem>
-
-              {/* <MenuItem value="hotels">Hotels</MenuItem>
-              <MenuItem value="attractions">Attractions</MenuItem> */}
             </Select>
           </FormControl>
 
           {/* Creating a form for the rating filter */}
           <FormControl className={classes.formControl}>
             <InputLabel id="rating">Rating</InputLabel>
-            {/* where we can select from the different types.
-            OnChange allows us to define an event that sets the rating to whatever is selected from the MenuItem values below.
+            {/* OnChange allows us to define an event that sets the rating to whatever is selected from the MenuItem values below.
             e is a placeholder for the rating to setRating mapping */}
             <Select
               id="rating"
@@ -129,9 +112,8 @@ const List = ({
             </Select>
           </FormControl>
           {/* Displaying the list of places */}
-          <Grid container spacing={3} className={classes.list}>
-            {/* Think of this as a for-each loop. 
-            Only if you have places, map over them. 
+          <Grid container spacing={2.5} className={classes.list}>
+            {/* Think of this as a for-each loop. Only if you have places, map over them. 
             Map takes in a callback function and in each iteration of the callback, it has one new place. Takes in place and an index.
             We only need a set of parentheses for the callback because we're instantly going to return a piece of JSX.*/}
             {places?.map((place, i) => (

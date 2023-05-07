@@ -22,7 +22,7 @@ export default makeStyles(() => ({
     flexDirection: "column",
     justifyContent: "center",
     width: "8rem",
-    border: "0.5px solid"
+    border: "0.5px solid",
   },
   mapContainer: {
     height: "85vh",

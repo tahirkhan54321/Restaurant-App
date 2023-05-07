@@ -18,9 +18,9 @@ import {
   Rating,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //RF
+import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //QF
 import PhoneIcon from "@mui/icons-material/Phone";
-import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
+import useStyles from "./styles"; //import styling
 import AccessTimeIcon from "@mui/icons-material/AccessTime"; // BYZ, QF
 import AlarmOnIcon from "@mui/icons-material/AlarmOn"; // BYZ, QF
 
@@ -33,8 +33,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
     ------------------------------------DECLARING VARIABLES & FUNCTIONS-----------------------------------------------------------
   */
 
-  /* adding styling for use in the remainder of the class, note that we call this as though it were a React hook 
-    note that this doesn't work anymore and will need to be replaced */
+  /* adding styling for use in the remainder of the class, note that we call this as though it were a React hook */
   const classes = useStyles();
 
   /* BYZ, QF
@@ -54,8 +53,8 @@ const PlaceDetails = ({ place, selected, refProp }) => {
     <Card elevation={6}>
       {/*An MUI card which is used to display images*/}
       <CardMedia
-        style={{ height: 350 }}
-        //if the is an image, use it. If not, use a default
+        style={{ height: 225 }}
+        //if the is an image, use it. If not, use a royalty free default
         image={
           place.photo
             ? place.photo.images.large.url
@@ -163,15 +162,8 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.open_now_text}
           </Typography>
         )}
-        {/*Displays clickable buttons for the tripadvisor site and the place website */}
+        {/*Displays clickable buttons for the website */}
         <CardActions>
-          {/* <Button
-            size="small"
-            color="primary"
-            onClick={() => window.open(place.web_url, "_blank")}
-          >
-            Trip Advisor
-          </Button> */}
           <Button
             size="small"
             color="primary"

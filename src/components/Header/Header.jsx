@@ -4,24 +4,18 @@
 
 import React from "react";
 import {
-  Autocomplete,
-  Box,
-  InputBase,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { AppBar } from "@mui/material";
-import { ClassNames } from "@emotion/react";
-import { Image, Search } from "@mui/icons-material";
-import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
+import useStyles from "./styles"; //import styling
 
 /*
   ------------------------------------CREATE HEADER---------------------------------------------------------------------------
 */
 
 const Header = () => {
-  /* adding styling for use in the remainder of the class, note that we call this as though it were a React hook 
-    note that this doesn't work anymore and will need to be replaced */
+  /* adding styling for use in the remainder of the class, note that we call this as though it were a React hook  */
   const classes = useStyles();
   /* creating appbar */
   return (

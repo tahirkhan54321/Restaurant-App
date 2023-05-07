@@ -10,7 +10,7 @@ import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //R
 import { LocationOnOutlined } from "@mui/icons-material";
 import AlarmOnIcon from "@mui/icons-material/AlarmOn"; // BYZ, QF
 
-import useStyles from "./styles"; //note that this doesn't work anymore and will need to be replaced
+import useStyles from "./styles"; //import styling
 
 /*
     ------------------------------------CREATE MAP---------------------------------------------------------------------------
@@ -28,8 +28,7 @@ const Map = ({
     ------------------------------------DECLARING VARIABLES-----------------------------------------------------------------------
   */
 
-  /* adding styling for use in the remainder of the class, note that we call this as though it were a React hook 
-    note that this doesn't work anymore and will need to be replaced */
+  /* adding styling for use in the remainder of the class, note that we call this as though it were a React hook */
   const classes = useStyles();
 
   /* checking to see if the device is desktop or not and storing in variable, if width of the device is >600px, isMobile is false */
@@ -86,8 +85,10 @@ const Map = ({
                 >
                   {place.name}
                 </Typography>
-                {/* Iterate over cuisines and display a chip for each one, if the place exists and the cuisine exists. Todo: use chip or not?
-                {place?.cuisine?.slice(0, 1).map(({ name }) => (
+
+                {/* TK - Iterate over cuisines and display a single chip for each one, if the place exists and the cuisine exists. 
+                Note that we removed this feature for aesthetics but are keeping it in case of reactivation */}
+                {/* {place?.cuisine?.slice(0, 1).map(({ name }) => (
                   <Chip
                     key={name}
                     size="small"
@@ -96,31 +97,20 @@ const Map = ({
                   />
                 ))} */}
 
-
-                {/* display image */}
-                {/* <img
-                  className={classes.pointer}
-                  src={
-                    place.photo
-                      ? place.photo.images.large.url
-                      : "https://burst.shopifycdn.com/photos/table-for-two.jpg?width=1850&format=pjpg&exif=1&iptc=1"
-                  }
-                  alt={place.name}
-                /> */}
                 {/* display rating */}
                 <Rating size="small" value={Number(place.rating)} readOnly />
-        {/* BYZ, QF - Opening hour */}
-        {place?.open_now_text && (
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            className={classes.spacing}
-          >
-          <AlarmOnIcon />
-            {place.open_now_text}
-          </Typography>
-        )}
-                {/* RF - Show the distance between user and restaurant*/}
+                {/* BYZ, QF - Opening hour */}
+                {place?.open_now_text && (
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    className={classes.spacing}
+                  >
+                    <AlarmOnIcon />
+                    {place.open_now_text}
+                  </Typography>
+                )}
+                {/* QF - Show the distance between user and restaurant*/}
                 {place?.distance_string && (
                   <Typography
                     variant="body2"

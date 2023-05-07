@@ -57,6 +57,7 @@ const App = () => {
         setCoordinates({ lat: latitude, lng: longitude });
       }
     );
+    console.log("coordinates of user location: " + coordinates); //TR - Testing
   }, []);
 
   /*
@@ -67,6 +68,7 @@ const App = () => {
       (place) => Number(place.rating) > rating
     );
     setFilteredPlaces(filteredPlaces);
+    console.log("filtered places are now: " + filteredPlaces); //TR - Testing
   }, [rating]);
 
   /* 
@@ -76,10 +78,10 @@ const App = () => {
   */
   useEffect(() => {
     setIsLoading(true); //at the beginning of the useEffect, display loading symbol
-    console.log("south west is " + bounds.sw);
-    console.log("north east is:" + bounds.ne);
+    console.log("south west is " + bounds.sw); //TR Testing
+    console.log("north east is:" + bounds.ne); //TR Testing
     getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-      console.log("data before setPlacesData is " + data);
+      console.log("data before setPlacesData is " + data); //TR Testing
       // setPlaces(data); //update the places array with the output of the function setPlaces
       setFilteredPlaces([]); //set filteredPlaces back to an empty array
       // YL - if the cuisine is selected, then return only the places that match the cuisine, otherwise filter by cuisine
@@ -91,30 +93,12 @@ const App = () => {
         );
         setFilteredPlaces(filteredPlaces);
       }
+      console.log("filteredPlaces after map move is " + filteredPlaces); //TR Testing
       setIsLoading(false); //once setPlaces has happened, stop loading symbol
     });
   }, [type, bounds]); //dependencies to run this useEffect if type, coordinates or bounds change
 
-  // useEffect(() => {
-  //   setIsLoading(true); //at the beginning of the useEffect, display loading symbol
-  //   console.log("south west is " + bounds.sw);
-  //   console.log("north east is:" + bounds.ne);
-  //   getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-  //     console.log("data before setPlacesData is " + data); // setPlaces(data); //update the places array with the output of the function setPlaces
-  //     setFilteredPlaces([]); //set filteredPlaces back to an empty array // //if the cuisine is not be selected, then return all places
-  //     if (type === "All") {
-  //       setPlaces(data);
-  //     } //if the cuisine is selected, then return only the places that match the cuisine
-  //     else {
-  //       const filteredPlaces = places.filter((place) =>
-  //         place.cuisine?.some((cuisine) => cuisine.name === cuisine)
-  //       );
-  //       setFilteredPlaces(filteredPlaces);
-  //     }
-  //     setIsLoading(false); //once setPlaces has happened, stop loading symbol
-  //   });
-  // }, [type, bounds]); //dependencies to run this useEffect if cuisine, coordinates or bounds change
-
+  
   /*
     ------------------------------------RENDERING COMPONENTS---------------------------------------------------------------------------
   */
