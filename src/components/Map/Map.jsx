@@ -1,6 +1,6 @@
 /*
 Author - Tahir Khan (TK)
-Modifying authors - Biyuan Zhao (BYZ), Qi Fu (QF)
+Modifying authors - Biyuan Zhao (BYZ), Qi Fu (QF), Shilin Li (SL)
 Reference: the core structure is taken from Youtube:
   https://www.youtube.com/watch?v=UKdQjQX1Pko&t=577s
   Original Author - YouTube, Javascript Mastery
@@ -16,8 +16,10 @@ import { Paper, Typography, useMediaQuery, Rating } from "@mui/material"; //useM
 import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection"; //QF
 import { LocationOnOutlined } from "@mui/icons-material";
 import AlarmOnIcon from "@mui/icons-material/AlarmOn"; // BYZ, QF
+import Marker from "./Marker"; //SL
 
 import useStyles from "./styles"; //import styling
+
 
 /*
     ------------------------------------CREATE MAP---------------------------------------------------------------------------
@@ -67,7 +69,8 @@ const Map = ({
         onChildClick={(child) => setChildClicked(child)}
       >
         {/* -------------------------------------RENDER THE PINS OR PAPER ON THE MAP----------------------------------------- */}
-
+        {/* SL - add in the user's location pin */}
+        <Marker lat={coordinates.lat} lng={coordinates.lng} /> 
         {/* Iterate over the places with key i */}
         {places?.map((place, i) => (
           <div
@@ -83,7 +86,7 @@ const Map = ({
               <LocationOnOutlined color="primary" fontSize="large" />
             ) : (
               // ------------------------------------------RENDER PAPER------------------------------------------------------------
-              <Paper className={classes.paper} elevation={3}>
+              <Paper className={classes.paper} elevation={3} style={{ backgroundColor: "#F9FBFD" }}>
                 {/* display place name */}
                 <Typography
                   className={classes.Typography}
@@ -105,13 +108,19 @@ const Map = ({
                 ))} */}
 
                 {/* display rating */}
-                <Rating size="small" value={Number(place.rating)} readOnly />
+                <Rating
+                  size="small"
+                  value={Number(place.rating)}
+                  readOnly
+                  className={classes.rating}
+                />
                 {/* BYZ, QF - Opening hour */}
                 {place?.open_now_text && (
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     className={classes.spacing}
+                    style={{ display: "flex", alignItems: "center", paddingTop: "5px" }}
                   >
                     <AlarmOnIcon />
                     {place.open_now_text}
@@ -123,7 +132,7 @@ const Map = ({
                     variant="body2"
                     color="textSecondary"
                     className={classes.spacing}
-                    style={{ display: "flex", alignItems: "center" }}
+                    style={{ display: "flex", alignItems: "center", paddingTop: "4px" }}
                   >
                     <AssistantDirectionIcon
                       style={{ marginRight: "0.15rem" }}

@@ -53,7 +53,10 @@ export default makeStyles(() => ({
     marginBottom: "20px",
   },
   website: {
-    border: "1px solid black",
-    backgroundColor: "darkgrey",
+    border: "1px solid grey !important",
+    backgroundColor: "#e8e8e8 !important",
+  },
+  rating: {
+    paddingBottom: "4px !important",
   },
 }));

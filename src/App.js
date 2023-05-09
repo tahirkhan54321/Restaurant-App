@@ -93,7 +93,7 @@ const App = () => {
       setFilteredPlaces([]); //set filteredPlaces back to an empty array
       // YL - if the cuisine is selected, then return only the places that match the cuisine, otherwise filter by cuisine
       if (type === "All") {
-        setPlaces(data);
+        setPlaces(data);  
       } else {
         const filteredPlaces = places.filter((place) =>
           place.cuisine?.some((cuisine) => cuisine.name === type)

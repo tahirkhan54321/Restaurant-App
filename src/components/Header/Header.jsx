@@ -39,7 +39,7 @@ const Header = () => {
         <div
           className="Truck-container"
           style={{
-            width: "74vw",
+            width: "65vw",
             position: "absolute",
             height: "100%",
             maxHeight: 120,

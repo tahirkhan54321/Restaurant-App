@@ -56,12 +56,12 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   */
 
   return (
-    //wrapping everything inside an MUI card component
-    <Card elevation={6} style={{ paddingRight: "5px" }}>
-      {/*An MUI card which is used to display images*/}
+    // wrapping everything inside an MUI card component
+    <Card elevation={6} style={{ paddingRight: "5px", backgroundColor: "#F9FBFD" }}>
+      {/* An MUI card which is used to display images*/}
       <CardMedia
         style={{ height: 225 }}
-        //if the is an image, use it. If not, use a royalty-free default
+        // if the is an image, use it. If not, use a royalty-free default
         image={
           place.photo
             ? place.photo.images.large.url
@@ -74,25 +74,25 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         <Typography gutterBottom variant="h5" className={classes.title}>
           {place.name}
         </Typography>
-        {/*Display the rating */}
+        {/* Display the rating */}
         <Box display="flex" justifyContent="space-between">
           <Rating value={Number(place.rating)} readOnly />
           <Typography gutterBottom variant="subtitle1">
             out of {place.num_reviews} reviews
           </Typography>
         </Box>
-        {/*Display the place price level in a box with some margin at the bottom */}
+        {/* Display the place price level in a box with some margin at the bottom */}
         <Box display="flex" justifyContent="space-between">
           <Typography variant="subtitle1">Price</Typography>
           <Typography gutterBottom variant="subtitle1">
             {place.price_level}
           </Typography>
         </Box>
-        {/*Iterate over cuisines and display a chip for each one, if the place exists and the cuisine exists. Todo: use chip or not?*/}
+        {/* Iterate over cuisines and display a chip for each one, if the place exists and the cuisine exists. Todo: use chip or not?*/}
         {place?.cuisine?.map(({ name }) => (
           <Chip key={name} size="small" label={name} className={classes.chip} />
         ))}
-        {/*Displays the addresses and puts a location icon in from MUI. Only renders the below if place.address exists */}
+        {/* Displays the addresses and puts a location icon in from MUI. Only renders the below if place.address exists */}
         {place?.address && (
           <Typography
             gutterBottom
@@ -104,7 +104,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.address}
           </Typography>
         )}
-        {/*Displays the phone number and puts a Phone icon in from MUI. Only renders the below if place.phone exists */}
+        {/* Displays the phone number and puts a Phone icon in from MUI. Only renders the below if place.phone exists */}
         {place?.phone && (
           <Typography
             variant="body2"
@@ -148,7 +148,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.open_now_text}
           </Typography>
         )}
-        {/*Displays clickable buttons for the website */}
+        {/* Displays clickable buttons for the website */}
         <CardActions>
           <Button
             size="small"

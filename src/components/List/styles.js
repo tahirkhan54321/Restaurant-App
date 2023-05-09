@@ -52,7 +52,7 @@ export default makeStyles((theme) => ({
     marginBottom: "5px",
   },
   scrolllist: {
-    height: "70vh",
+    height: "65vh",
     overflow: "auto",
     marginTop: "20px !important",
   },

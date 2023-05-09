@@ -79,7 +79,7 @@ const List = ({
       ) : (
         <>
         {/* YL - Creating a form for the cuisine type filter */}
-          <FormControl className={classes.formControl}>
+          <FormControl className={classes.formControl} style={{ backgroundColor: "#f5f6f7" }}>
             {/* OnChange allows us to define an event that sets the cuisine to whatever is selected from the MenuItem values below.
             e is a placeholder for the cuisine to setCuisine mapping */}
             <Select
@@ -103,7 +103,7 @@ const List = ({
           </FormControl>
 
           {/* Creating a form for the rating filter */}
-          <FormControl className={classes.formControl}>
+          <FormControl className={classes.formControl} style={{ backgroundColor: "#f5f6f7" }}>
             <InputLabel id="rating">Rating</InputLabel>
             {/* OnChange allows us to define an event that sets the rating to whatever is selected from the MenuItem values below.
             e is a placeholder for the rating to setRating mapping */}
