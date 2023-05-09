@@ -152,7 +152,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         <CardActions>
           <Button
             size="small"
-            // color="primary"
             onClick={() => window.open(place.website, "_blank")}
             className={classes.website}
           >
