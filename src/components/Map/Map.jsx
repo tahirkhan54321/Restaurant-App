@@ -55,10 +55,16 @@ const Map = ({
         defaultCenter={coordinates}
         //actual center
         center={coordinates}
-        defaultZoom={14}
+        defaultZoom={15}
         margin={[50, 50, 50, 50]}
-        //unknown entity atm, todo
-        options={""}
+        //map settings
+        options={{
+          zoomControl: true,
+          streetViewControl: false,
+          mapTypeControl: true,
+          fullscreenControl: false,
+          mapTypeId: "satellite",
+        }}
         //when the map changes, use callback function to set the new center of the map
         onChange={(e) => {
           //e is a placeholder object for the callback function which has properties from Google Maps React object

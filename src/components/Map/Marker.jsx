@@ -12,7 +12,7 @@ const Marker = () => (
     style={{
       position: "absolute",
       zIndex: 2,
-      color: "skyBlue",
+      color: "#0ea8f0",
       fontSize: "40px",
     }}
   >

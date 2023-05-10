@@ -71,7 +71,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
       />
       <CardContent>
         {/*Display the place name with some margin at the bottom */}
-        <Typography gutterBottom variant="h5" className={classes.title}>
+        <Typography gutterBottom variant="h6" className={classes.title}>
           {place.name}
         </Typography>
         {/* Display the rating */}

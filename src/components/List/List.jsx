@@ -80,8 +80,8 @@ const List = ({
         <>
         {/* YL - Creating a form for the cuisine type filter */}
           <FormControl className={classes.formControl} style={{ backgroundColor: "#f5f6f7" }}>
-            {/* OnChange allows us to define an event that sets the cuisine to whatever is selected from the MenuItem values below.
-            e is a placeholder for the cuisine to setCuisine mapping */}
+            {/* OnChange allows us to define an event that sets the cuisine type to whatever is selected from the MenuItem values below.
+            e is a placeholder for the type to setType mapping */}
             <Select
               id="type"
               value={type}
